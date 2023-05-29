@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Search Results</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Search Results</h1>
+    <form class="form-inline mt-4">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="mt-4">
+      <h3>Results:</h3>
+      <div class="list-group">
+        <a href="{{linkAmazon}}" class="list-group-item list-group-item-action">
+          <div class="d-flex align-items-start">
+            <img src="{{imgamazon}}" alt="Image 1" class="mr-3" style="width: 100px;">
+            <div class="flex-grow-1">
+              <h5 class="mb-1">Amazon</h5>
+              <p class="mb-1">${{priceAmazon}}.00</p>
+              <small>{{titleAmazon}}</small>
+            </div>
+          </div>
+        </a>
+        <a href="{{linkML}}" class="list-group-item list-group-item-action">
+          <div class="d-flex align-items-start">
+            <img src="{{imgML}}" alt="Image 2" class="mr-3" style="width: 100px;">
+            <div class="flex-grow-1">
+              <h5 class="mb-1">Mercado Libre</h5>
+              <p class="mb-1">${{priceML}}.00</p>
+              <small>{{titleML}}</small>
+            </div>
+          </div>
+        </a>
+        <a href="{{linkCS}}" class="list-group-item list-group-item-action">
+          <div class="d-flex align-items-start">
+            <img src="{{imgCS}}" alt="Image 3" class="mr-3" style="width: 100px;">
+            <div class="flex-grow-1">
+              <h5 class="mb-1">Claro Shop</h5>
+              <p class="mb-1">${{priceCS}}.00</p>
+              <small>{{titleCS}}</small>
+            </div>
+          </div>
+        </a>
+       
+      </div>
+    </div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+   
