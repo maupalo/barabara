@@ -104,7 +104,7 @@ await page.waitForSelector('#cb1-edit')
       let anuncio = false;
       for(let precio of precios){
         
-        if(i<=4){
+        if(i<=3){
           stringprecio=precio.textContent
           stringprecio = stringprecio.replace(",", "");
           numprecio= parseFloat(stringprecio)
@@ -120,7 +120,7 @@ await page.waitForSelector('#cb1-edit')
       var images = document.querySelectorAll('img.ui-search-result-image__element');
       for(let image of images){
         
-        if(i<=4 ){
+        if(i<=3 ){
           arrayimg.push(image.src);
         }
         i++;
@@ -132,7 +132,7 @@ await page.waitForSelector('#cb1-edit')
       i=0;
 
       for(let elem of elements){
-        if(i<=4){
+        if(i<=3){
           if (true){
             elementos.push({
               link: elem.href,
@@ -280,16 +280,56 @@ await page.goto('https://www.claroshop.com/');
     });
     console.log(listaCS)
 
+    function findIndexOfSmallestElement(array) {
+      if (array.length === 0) {
+        return -1; // Return -1 if the array is empty
+      }
+    
+      let smallest = array[0];
+      let smallestIndex = 0;
+    
+      for (let i = 1; i < array.length; i++) {
+        if (array[i] < smallest) {
+          smallest = array[i];
+          smallestIndex = i;
+        }
+      }
+    
+      return smallestIndex;
+    }
+    
+    // Example usage:
+    const numbers = [lista[0].price, listaML[0].price*12, listaCS[0].price];
+    const index = findIndexOfSmallestElement(numbers);
+    console.log("Index of smallest element:", index); // Output: 3
+    let smallestStore="";
+    switch(index){
+      case 0:
+        smallestStore="Amazon"
+        break;
+        case 1:
+          smallestStore="Mercado Libre"
+          break;
+          case 2:
+            smallestStore="Claro Shop"
+            break;
+            default:
+              smallestStore="Ninguna, bola de careros"
+
+
+    }
+
     res.render('resultados', { title: 'test.jpg', 
     imgamazon: lista[0].image,
       priceAmazon: lista[0].price,
       linkAmazon: lista[0].link,
       imgML: listaML[0].image,
-      priceML: listaML[0].price,
+      priceML: listaML[0].price*12,
       linkML: listaML[0].link,
       imgCS: listaCS[0].image,
       priceCS: listaCS[0].price,
-      linkCS: listaCS[0].link
+      linkCS: listaCS[0].link,
+      cheaper: smallestStore
     });
     await browser.close();
   })();
